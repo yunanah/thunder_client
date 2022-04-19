@@ -39,10 +39,25 @@ const screenOptions = ({route}) => ({
 
 const Tab = props => {
   return (
-    <BottomTab.Navigator>
-      <BottomTab.Screen component={Main} />
-      <BottomTab.Screen component={Login} />
-      <BottomTab.Screen component={Splash} />
+    <BottomTab.Navigator
+      screenOptions={screenOptions}
+      initialRouteName="Root"
+      backBehavior="none">
+      <BottomTab.Screen
+        name="Main"
+        component={Main}
+        options={{headerShown: true, title: '메인'}}
+      />
+      <BottomTab.Screen
+        name="Login"
+        component={Login}
+        options={{headerShown: true, title: '로그인'}}
+      />
+      <BottomTab.Screen
+        name="Splash"
+        component={Splash}
+        options={{headerShown: true, title: 'splash'}}
+      />
     </BottomTab.Navigator>
   );
 };
