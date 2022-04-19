@@ -1,15 +1,15 @@
 import React from 'react';
-import {CustomIcon} from './components/common';
+import {CustomIcon} from './src/components/common';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import Main from './screens/Main';
-import Login from './screens/Login';
-import Splash from './screens/Splash';
+import Main from './src/screens/Main/Main';
+import Login from './src/screens/Login/Login';
+import Splash from './src/screens/Splash/Splash';
 
 const BottomTab = createBottomTabNavigator();
 
-const screenOptions = ({route}) => ({
+const screenOptions: object = ({route}) => ({
   tabBarIcon: ({focused, color, size}) => {
     let type = '';
     let icon = '';
@@ -37,11 +37,11 @@ const screenOptions = ({route}) => ({
   tabBarActiveTintColor: 'orange',
 });
 
-const Tab = props => {
+const Tab = () => {
   return (
     <BottomTab.Navigator
       screenOptions={screenOptions}
-      initialRouteName="Root"
+      initialRouteName="Main"
       backBehavior="none">
       <BottomTab.Screen
         name="Main"
