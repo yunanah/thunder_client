@@ -1,15 +1,31 @@
-import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {View, StyleSheet, Button} from 'react-native';
+import {TextInput} from 'react-native-gesture-handler';
 
-import {useAppSelector, useAppDispatch} from '../../hooks/index';
+import {useSelector, useDispatch} from 'react-redux';
+import {ApplicationState, onLogin} from '../../redux';
+
 const Login: React.FC = () => {
-  // const {navigation} = props;
+  const [phone, setPhone] = useState('');
 
-  // The `state` arg is correctly typed as `RootState` already
-  const count = useAppSelector(state => state.counter.value);
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
 
-  return <View style={styles.container}>로그인</View>;
+  const {user, error} = useSelector(
+    (state: ApplicationState) => state.userReducer,
+  );
+
+  const {token} = user;
+
+  const onTabLogin = () => {
+    dispatch(onLogin(phone));
+  };
+
+  return (
+    <View style={styles.container}>
+      <TextInput placeholder="핸드폰 번호" onChangeText={setPhone} />
+      <Button onPress={onTabLogin}>다음</Button>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({

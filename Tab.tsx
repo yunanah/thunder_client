@@ -3,9 +3,10 @@ import {CustomIcon} from './src/components/common';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import Main from './src/screens/Main/Main';
-import Login from './src/screens/Login/Login';
-import Splash from './src/screens/Splash/Splash';
+import Map from './src/screens/Main/Map';
+import Meetings from './src/screens/Main/Meetings';
+import Friends from './src/screens/Main/Friends';
+import Message from './src/screens/Main/Message';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -15,17 +16,22 @@ const screenOptions: object = ({route}) => ({
     let icon = '';
 
     switch (route.name) {
-      case 'Main':
+      case 'Map':
         type = 'FontAwesome';
         icon = focused ? 'user-circle-o' : 'user-circle';
         break;
 
-      case 'Login':
+      case 'Friends':
         type = 'AntDesign';
         icon = 'calendar';
         break;
 
-      case 'Splash':
+      case 'Meetings':
+        type = 'Ionicons';
+        icon = focused ? 'md-people-circle' : 'md-people-circle-outline';
+        break;
+
+      case 'Message':
         type = 'Ionicons';
         icon = focused ? 'md-people-circle' : 'md-people-circle-outline';
         break;
@@ -41,22 +47,27 @@ const Tab = () => {
   return (
     <BottomTab.Navigator
       screenOptions={screenOptions}
-      initialRouteName="Main"
+      initialRouteName="Map"
       backBehavior="none">
       <BottomTab.Screen
-        name="Main"
-        component={Main}
-        options={{headerShown: true, title: '메인'}}
+        name="Map"
+        component={Map}
+        options={{headerShown: true, title: '지도'}}
       />
       <BottomTab.Screen
-        name="Login"
-        component={Login}
-        options={{headerShown: true, title: '로그인'}}
+        name="Friends"
+        component={Friends}
+        options={{headerShown: true, title: '친한 친구'}}
       />
       <BottomTab.Screen
-        name="Splash"
-        component={Splash}
-        options={{headerShown: true, title: 'splash'}}
+        name="Meetings"
+        component={Meetings}
+        options={{headerShown: true, title: '번개 모임'}}
+      />
+      <BottomTab.Screen
+        name="Message"
+        component={Message}
+        options={{headerShown: true, title: '메시지'}}
       />
     </BottomTab.Navigator>
   );
