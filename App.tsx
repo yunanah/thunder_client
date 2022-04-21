@@ -7,13 +7,11 @@ import {store} from './src/redux';
 import Login from './src/screens/Login/Login';
 
 const App = () => {
-  const [showLogin, setShowLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(true);
 
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        {showLogin ? <Login /> : <Tab />}
-      </NavigationContainer>
+      <NavigationContainer>{isLogin ? <Login /> : <Tab />}</NavigationContainer>
     </Provider>
   );
 };
